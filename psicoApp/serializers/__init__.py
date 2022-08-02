@@ -1,0 +1,3 @@
+from .citySerializer import CitySerializer
+from .psychologistSerializer import PsychologistSerializer
+from .typeSpecialtySerializer import TypeSpecialtySerializer
