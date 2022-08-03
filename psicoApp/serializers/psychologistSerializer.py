@@ -16,12 +16,14 @@ class PsychologistSerializer(serializers.ModelSerializer):
 
         cityData = validated_data.pop('city')
         typeSpecialtyData = validated_data.pop('typeSpecialty')
-
-        cityInstance = City.objects.get(name=cityData.get('name'))
-        if cityInstance is None:    
-            cityInstance = City.objects.create(**cityData)
-        typeInstance = TypeSpecialty.objects.get(nameSpecialty=typeSpecialtyData.get('nameSpecialty'))
-        if typeInstance is None:
+        
+        try:
+            cityInstance = City.objects.get(name=cityData.get('name'))
+        except Exception as _:
+            cityInstance = City.objects.create(**cityData)  
+        try:
+            typeInstance = TypeSpecialty.objects.get(nameSpecialty=typeSpecialtyData.get('nameSpecialty'))
+        except Exception as _:
             typeInstance = TypeSpecialty.objects.create(**typeSpecialtyData)
 
         psychologistInstance = Psychologist.objects.create(city=cityInstance,typeSpecialty=typeInstance,**validated_data)
