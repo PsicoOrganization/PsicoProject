@@ -1,0 +1,1 @@
+web: gunicorn PsicoProject.wsgi
