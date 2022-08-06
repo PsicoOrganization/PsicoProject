@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-y_j95jlj)l3z3dd&-zjyt+4_(l8s2z_1jn%r_c1*@d0vc1m^)!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'psicoApp',
+    'corsheaders',
 ]
 
 SIMPLE_JWT = {
@@ -61,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
